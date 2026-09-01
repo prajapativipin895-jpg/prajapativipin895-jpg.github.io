@@ -313,37 +313,41 @@ img, canvas, video, .card-preview {
 
 
 function shareCard() { 
-      // ⬇️ यहाँ नीचे अपना असली Monetag Direct Link पेस्ट करें ⬇️
-        var monetagDirectLink = "https://omg10.com/4/11691912"; 
+    // ⚠️ यहाँ अपना पहला Monetag Direct Link डालें
+    var mainMonetagLink = "https://omg10.com/4/11691912"; 
 
-        // बटन क्लिक होते ही नए टैब में विज्ञापन खुल जाएगा
-        if (monetagDirectLink && monetagDirectLink !== "https://omg10.com/4/11691912") {
-            window.open(monetagDirectLink, "_blank");
-        }
-    try {
-        // नाम को डबल कोट्स में सुरक्षित किया
+    try { 
         var userName = "Vipin Prajapati"; 
-        
-        // इनपुट सेलेक्टर्स के अंदर के कोट्स फिक्स किए
-        var nameInput = document.getElementById("Name") || document.querySelector("input[type='text']") || document.querySelector("input"); 
+        var nameInput = document.getElementById("Name"); 
         
         if (nameInput && nameInput.value.trim() !== "") { 
             userName = nameInput.value.trim(); 
         } 
         
-        var siteUrl = "https://prajapativipin895-jpg.github.io"; 
+        var siteUrl = "https://github.io"; 
+        var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n\n" + siteUrl; 
         
-        // मैसेज स्ट्रिंग को सही से जोड़ा (\n के बाद कोट्स बंद किए)
-        var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl; 
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(message); 
+
+        // 🔥 मास्टर लॉजिक: पहले विज्ञापन खुलेगा, फिर व्हाट्सएप
+        if (mainMonetagLink && mainMonetagLink !== "https://omg10.com/4/11691912") {
+            
+            // पहले व्हाट्सएप यूआरएल को बैकग्राउंड मेमोरी में सेट कर देते हैं
+            setTimeout(function() {
+                window.location.href = whatsappUrl;
+            }, 500); // आधा सेकंड का डिले ताकि ब्राउज़र क्रैश न हो
+
+            // अब यूजर को सीधे विज्ञापन पर भेजते हैं (यह कभी ब्लॉक नहीं होगा)
+            window.location.href = mainMonetagLink;
+            
+        } else {
+            // अगर एड्स लिंक न हो तो डायरेक्ट व्हाट्सएप खुलेगा
+            window.location.href = whatsappUrl;
+        }
         
-        // व्हाट्सएप का सही शेयरिंग API यूआरएल (://whatsapp.com)
-        var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message); 
-        
-        window.location.href = whatsappUrl; 
     } catch (error) { 
-        // बैकअप लिंक को भी पूरी तरह सही और सुरक्षित किया
-        var backupMessage = "Happy Janmashtami https://github.io";
-        window.location.href = "https://api.whatsapp.com/send?text=" + encodeURIComponent(backupMessage); 
+        var backupMessage = "🚩 *Vipin Prajapati* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nhttps://github.io";
+        window.location.href = "https://api.whatsapp.com" + encodeURIComponent(backupMessage); 
     } 
 }
 
