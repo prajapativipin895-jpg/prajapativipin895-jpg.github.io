@@ -150,3 +150,107 @@ body{
             flex-direction: column;
         }
     }
+
+
+
+
+
+/* 1. Global Reset & Body Control - Horizontal scrolling rokne ke liye */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Page mobile par left-right nahi hilega */
+  margin: 0;
+  padding: 0;
+  font-size: 16px;    /* Mobile ke liye standard reading font size */
+}
+
+/* 2. Responsive Images & Canvas - Screen se bahar jaane se rokne ke liye */
+img, canvas, video, .card-preview {
+  max-width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box;
+}
+
+/* 3. Main Container Reset - Desktop ke fixed px width ko flexible karne ke liye */
+.container, .main-wrapper, .content-box {
+  width: 90% !important;  /* Mobile screen ke dono taraf 5-5% space milega */
+  max-width: 1200px;      /* Desktop par bade hone ki limit */
+  margin: 0 auto !important;
+  padding: 15px !important;
+}
+
+/* ---- SMARTPHONES BREAKPOINT (Screens up to 768px) ---- */
+@media screen and (max-width: 768px) {
+  
+  /* 4. Navigation/Menu Bar - Links ko single row se block me lane ke liye */
+  nav, .menu-container, .navbar-nav {
+    display: flex !important;
+    flex-wrap: wrap !important; /* Space kam hone par links automatic niche aayenge */
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 10px 0 !important;
+  }
+  
+  nav a, .menu-item {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+  }
+
+  /* 5. Headings & Text Size Adjustment */
+  h1, .main-title {
+    font-size: 24px !important; /* Mobile par headings choti aur sundar dikhengi */
+    line-height: 1.3 !important;
+  }
+  
+  h2, .section-title {
+    font-size: 20px !important;
+  }
+  
+  p, .description {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 6. Gallery Section - Images ko single column ya 2 columns me karne ke liye */
+  .gallery-grid, .image-gallery, .grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; /* 2 columns grid */
+    gap: 10px !important;
+  }
+
+  /* 7. Make Your Wishing Card Generator Area */
+  .card-generator-box, .form-container {
+    width: 100% !important;
+    padding: 10px !important;
+    box-shadow: none !important; /* Mobile par clean flat design */
+  }
+
+  /* 8. Input Fields & Buttons - Easy Touch targets ke liye */
+  input[type="text"], select, textarea {
+    width: 100% !important;
+    font-size: 16px !important; /* iOS/Safari me auto-zoom se bachne ke liye 16px zaroori hai */
+    padding: 12px !important;    /* Ungli se touch karne ke liye bada box */
+    margin-bottom: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .btn, button, .download-btn, .generate-btn {
+    width: 100% !important;      /* Full width buttons takki aasani se click ho sky */
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    margin: 8px 0 !important;
+    display: block !important;
+  }
+}
+
+/* ---- SMALL MOBILE DEVICES BREAKPOINT (Screens up to 480px) ---- */
+@media screen and (max-width: 480px) {
+  h1, .main-title {
+    font-size: 20px !important;
+  }
+  
+  .gallery-grid, .image-gallery {
+    grid-template-columns: 1fr !important; /* Bohot chote phones par images ek ke niche ek aayengi */
+  }
+}
