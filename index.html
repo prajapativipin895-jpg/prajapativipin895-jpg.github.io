@@ -218,6 +218,12 @@ img, canvas, video, .card-preview {
     <br>
     <button onclick="generateWish()" style="padding: 10px 20px; background-color: #ffd700; color: #2a004d; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; margin-right: 10px;">Generate Card</button>
     <button id="downloadBtn" onclick="downloadCard()" style="padding: 10px 20px; background-color: #00e676; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; display: none;">Download Card</button>
+            <!-- 1. WhatsApp Share Button ka HTML (Ise Download button ke niche lagayein) -->
+<div style="text-align: center; margin-top: 15px;">
+    <a id="whatsappShareBtn" href="#" style="background-color: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; display: inline-block; font-weight: bold; font-size: 16px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); font-family: sans-serif;">
+        📲 WhatsApp Par Share Karein
+    </a>
+</div>
     
     <!-- कार्ड प्रिव्यू देखने के लिए कैनवास -->
     <div style="margin-top: 20px;">
@@ -303,46 +309,44 @@ img, canvas, video, .card-preview {
         link.click();
         document.body.removeChild(link);
     }
-</script>
-        <!-- 1. WhatsApp Share Button ka HTML (Ise Download button ke niche lagayein) -->
-<div style="text-align: center; margin-top: 15px;">
-    <a id="whatsappShareBtn" href="#" style="background-color: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; display: inline-block; font-weight: bold; font-size: 16px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); font-family: sans-serif;">
-        📲 WhatsApp Par Share Karein
-    </a>
-</div>
 
-<!-- 2. WhatsApp logic aur Monetag Direct Link ka JavaScript (Ise </body> tag se pehle lagayein) -->
-<script>
+
+
+
+
+    
 document.getElementById('whatsappShareBtn').addEventListener('click', function(e) {
     e.preventDefault();
     
-    // 1. User ne jo naam input box me dala hai use check karein
-    // Note: Agar aapke input box ki class ya id alag hai, toh aap use yahan badal sakte hain
+    // 1. User ka naam check karein
     var nameInput = document.querySelector('input[type="text"]') || document.querySelector('input');
     var userName = nameInput ? nameInput.value.trim() : "";
-    
     if (userName === "") {
-        userName = "Your Name"; // Agar user naam na dale toh default naam
+        userName = "Vipin Prajapati"; 
     }
     
-    // 2. Aapki website ka link (GitHub link apne aap utha lega)
+    // 2. Website ka URL setup
     var siteUrl = window.location.origin + window.location.pathname; 
     
-    // 3. WhatsApp par bhejne wala sundar message text
+    // 3. WhatsApp Message text
     var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl;
-    
-    // WhatsApp Share Link setup
     var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
     
-    // 4. Monetag ka Direct Link naye tab me kholein (Kamayi ke liye)
-    // Jo link aapne Monetag dashboard se copy kiya tha, use niche dakhil karein
-    var monetagLink = "https://omg10.com/4/11691912"; // <-- YAHAN APNA MONETAG LINK PASTE KAREIN
-    window.open(monetagLink, "_blank");
+    // 4. Monetag Direct Link (Yahan apna asli link dalein)
+    var monetagLink = "https://vash.com"; // <-- APNA LINK PASTE KAREIN
+
+    // 🔥 FIX: Pehle WhatsApp ko naye tab me kholein taaki browser use block na kare
+    window.open(whatsappUrl, "_blank");
     
-    // 5. User ko WhatsApp par bhejkar message share karwayein
-    window.location.href = whatsappUrl;
+    // 🔥 FIX: Phir usi screen par Monetag ka ad load karwayein
+    window.location.href = monetagLink;
 });
+
 </script>
+
+
+<!-- 2. WhatsApp logic aur Monetag Direct Link ka JavaScript (Ise </body> tag se pehle lagayein) -->
+
 
 
   
