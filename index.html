@@ -316,8 +316,12 @@ function shareCardOnly() {
     var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n\n" + siteUrl; 
     
     // बिना किसी एड्स के डायरेक्ट साफ़ यूआरएल जो तुरंत व्हाट्सएप खोलेगा
-    window.location.href = "https://whatsapp.com" + encodeURIComponent(message);
+    window.location.href = "https://api.whatsapp.com" + encodeURIComponent(message);
 }
+     catch (error) { 
+        var backupMessage = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nhttps://github.io";
+        window.location.href = "https://api.whatsapp.com" + encodeURIComponent(backupMessage); 
+    } 
 
 
 </script>
