@@ -224,6 +224,32 @@ img, canvas, video, .card-preview {
         <canvas id="cardCanvas" width="500" height="460" style="max-width: 100%; border-radius: 8px; display: none; border: 1px solid #ffd700;"></canvas>
     </div>
 </div>
+        <!-- WhatsApp Button HTML -->
+<a id="whatsappShareBtn" href="#" style="background-color: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; margin-top: 10px;">
+    Share on WhatsApp
+</a>
+
+<script>
+document.getElementById('whatsappShareBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // User ne jo naam dala hai wo uthayein
+    var userName = document.querySelector('input').value || "Kisi ne"; 
+    var siteUrl = window.location.href; // Aapki website ka link apne aap le lega
+    
+    // WhatsApp par bhejne wala message text
+    var message = "🚩 *" + userName + "* ne aapke liye ek special Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye niche link par click karein 👇\n" + siteUrl;
+    
+    // WhatsApp Share Link
+    var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
+    
+    // Pahle Monetag ka Direct Link naye tab me kholein (Kamayi ke liye)
+    window.open("YOUR_MONETAG_DIRECT_LINK_HERE", "_blank");
+    
+    // Phir WhatsApp par share karwayein
+    window.location.href = whatsappUrl;
+});
+</script>
 
 <script>
     function generateWish() {
