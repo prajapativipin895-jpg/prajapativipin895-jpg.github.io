@@ -218,7 +218,7 @@ img, canvas, video, .card-preview {
     <br>
     <button onclick="generateWish()" style="padding: 10px 20px; background-color: #ffd700; color: #2a004d; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; margin-right: 10px;">Generate Card</button>
     <button id="downloadBtn" onclick="downloadCard()" style="padding: 10px 20px; background-color: #00e676; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; display: none;">Download Card</button>
-    <button id="shareBtn" onclick="shareCard()" style="padding: 10px 20px; background-color: #00e676; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; display: none;">Share Card</button>
+    <button id="shareBtn" onclick="shareCard()" style="padding: 10px 20px; background-color: #00e676; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; display: inline-block;">Share Card</button>
     
     <!-- कार्ड प्रिव्यू देखने के लिए कैनवास -->
     <div style="margin-top: 20px;">
@@ -307,31 +307,33 @@ img, canvas, video, .card-preview {
 
 
 
-function shareCard() {
-    // 1. User ne jo naam input box me dala hai use check karein
-    // Note: Agar aapke input box ki id 'nameInput' hai toh ye bilkul sahi kaam karega
-    var nameInput = document.getElementById('nameInput') || document.querySelector('input[type="text"]') || document.querySelector('input');
-    var userName = nameInput ? nameInput.value.trim() : "";
-    
-    if (userName === "") {
-        userName = "Vipin Prajapati"; // Agar user naam na dale toh default naam
-    }
-    
-    // 2. Aapki website ka link (GitHub link apne aap utha lega)
-    var siteUrl = window.location.origin + window.location.pathname; 
-    
-    // 3. WhatsApp par bhejne wala sundar message text
-    var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl;
-    var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
-    
-    // 4. Monetag ka Direct Link (Yahan apna asli link dalein)
-    var monetagLink = "https://vash.com"; // <-- APNA LINK PASTE KAREIN
 
-    // 5. FIX: Pehle WhatsApp ko naye tab me kholein
-    window.open(whatsappUrl, "_blank");
-    
-    // 6. FIX: Phir usi screen par Monetag ka ad load karwayein
-    window.location.href = monetagLink;
+function shareCard() {
+    try {
+        // 1. User ka naam bilkul simple tarike se check karein
+        var userName = "Vipin Prajapati"; // default naam
+        var nameInput = document.getElementById('nameInput') || document.querySelector('input');
+        
+        if (nameInput && nameInput.value.trim() !== "") {
+            userName = nameInput.value.trim();
+        }
+        
+        // 2. Aapki website ka link manually daal dete hain taaki galti na ho
+        var siteUrl = "https://prajapativipin895-jpg.github.io/"; 
+        
+        // 3. WhatsApp message text format
+        var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl;
+        
+        // 4. WhatsApp open karne ka universal link
+        var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
+        
+        // 5. Direct WhatsApp par bhejो
+        window.location.href = whatsappUrl;
+        
+    } catch (error) {
+        // Agar fir bhi koi dikkat aaye toh ye simple link khol dega
+        window.location.href = "https://whatsapp.comHappy%20Janmashtami";
+    }
 }
 
 
