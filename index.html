@@ -314,6 +314,13 @@ img, canvas, video, .card-preview {
 
 function shareCard() { 
     try { 
+            // ⬇️ यहाँ नीचे अपना असली Monetag Direct Link पेस्ट करें ⬇️
+        var monetagDirectLink = "YOUR_MONETAG_DIRECT_LINK_HERE"; 
+
+        // बटन क्लिक होते ही नए टैब में विज्ञापन खुल जाएगा
+        if (monetagDirectLink && monetagDirectLink !== "YOUR_MONETAG_DIRECT_LINK_HERE") {
+            window.open(monetagDirectLink, "_blank");
+        }
         // नाम को डबल कोट्स में सुरक्षित किया
         var userName = "Vipin Prajapati"; 
         
