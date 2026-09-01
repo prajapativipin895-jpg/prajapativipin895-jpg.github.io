@@ -336,7 +336,7 @@ function shareCard() {
     } catch (error) { 
         // बैकअप लिंक को भी पूरी तरह सही और सुरक्षित किया
         var backupMessage = "Happy Janmashtami https://github.io";
-        window.location.href = "https://whatsapp.com/send?text=" + encodeURIComponent(backupMessage); 
+        window.location.href = "https://api.whatsapp.com/send?text=" + encodeURIComponent(backupMessage); 
     } 
 }
 
