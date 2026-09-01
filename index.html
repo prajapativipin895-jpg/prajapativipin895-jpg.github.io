@@ -308,28 +308,34 @@ img, canvas, video, .card-preview {
 
 
 
-function shareCard() {
-    try {
+function shareCard() { 
+    try { 
+        // 1. नाम को कोट्स में रखा
         var userName = "Vipin Prajapati"; 
-        var nameInput = document.getElementById('nameInput') || document.querySelector('input[type="text"]') || document.querySelector('input');
         
-        if (nameInput && nameInput.value.trim() !== "") {
-            userName = nameInput.value.trim();
-        }
+        // 2. ID और Selectors में कोट्स फिक्स किए
+        var nameInput = document.getElementById("nameInput") || document.querySelector("input[type='text']") || document.querySelector("input"); 
+        
+        if (nameInput && nameInput.value.trim() !== "") { 
+            userName = nameInput.value.trim(); 
+        } 
         
         var siteUrl = "https://prajapativipin895-jpg.github.io/"; 
-        var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl;
         
-        // Sahi aur standard WhatsApp share API link
-        var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
-        window.location.href = whatsappUrl;
+        // 3. मैसेज स्ट्रिंग और न्यू-लाइन (\n) को सही से जोड़ा
+        var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl; 
         
-    } catch (error) {
-        // Backup link ko bhi poori tarah sahi kar diya hai
-        window.location.href = "https://whatsapp.comHappy%20Janmashtami%20https://prajapativipin895-jpg.github.io/";
-    }
+        // 4. सही WhatsApp Share API Link का इस्तेमाल किया
+        var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message); 
+        
+        window.location.href = whatsappUrl; 
+    } catch (error) { 
+        // 5. बैकअप लिंक को भी सही API फॉर्मेट में बदला
+        var backupMessage = "Happy Janmashtami https://prajapativipin895-jpg.github.io/";
+        window.location.href = "https://whatsapp.com" + encodeURIComponent(backupMessage); 
+    } 
 }
- 
+
 
 </script>
 
