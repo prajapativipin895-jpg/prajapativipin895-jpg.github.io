@@ -313,7 +313,7 @@ img, canvas, video, .card-preview {
 
 function shareCard() { 
     // आपका Monetag Direct Link
-    var mainMonetagLink = "https://omg10.com/4/11691912"; 
+    var mainMonetagLink = "https://omg10.com/4/11699831"; 
 
     try { 
         var userName = "Vipin Prajapati"; 
@@ -326,7 +326,7 @@ function shareCard() {
         var siteUrl = "https://prajapativipin895-jpg.github.io/"; 
         var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n\n" + siteUrl; 
         
-        var whatsappUrl = "https://whatsapp://send?text=" + encodeURIComponent(message); 
+        var whatsappUrl = "https://api.whatsapp://send?text=" + encodeURIComponent(message); 
 
         // 🔥 सुधरा हुआ मास्टर लॉजिक: अब विज्ञापन 100% खुलेगा
         if (mainMonetagLink && mainMonetagLink !== "") {
@@ -346,7 +346,7 @@ function shareCard() {
     } catch (error) { 
         var backupMessage = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nhttps://prajapativipin895-jpg.github.io/";
         // बैकअप लिंक का सही व्हाट्सएप यूआरएल फॉर्मेट
-        window.location.href = "https://whatsapp.com" + encodeURIComponent(backupMessage); 
+        window.location.href = "https://api.whatsapp.com" + encodeURIComponent(backupMessage); 
     } 
 }
 
