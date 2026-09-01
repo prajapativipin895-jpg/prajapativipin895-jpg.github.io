@@ -310,29 +310,23 @@ img, canvas, video, .card-preview {
 
 function shareCard() {
     try {
-        // 1. User ka naam bilkul simple tarike se check karein
-        var userName = "Vipin Prajapati"; // default naam
-        var nameInput = document.getElementById('nameInput') || document.querySelector('input');
+        var userName = "Vipin Prajapati"; 
+        var nameInput = document.getElementById('nameInput') || document.querySelector('input[type="text"]') || document.querySelector('input');
         
         if (nameInput && nameInput.value.trim() !== "") {
             userName = nameInput.value.trim();
         }
         
-        // 2. Aapki website ka link manually daal dete hain taaki galti na ho
         var siteUrl = "https://prajapativipin895-jpg.github.io/"; 
-        
-        // 3. WhatsApp message text format
         var message = "🚩 *" + userName + "* ne aapke liye ek special Krishna Janmashtami wish card bheja hai! 🎁\n\nApna naam likh kar dekhne ke liye jaldi se niche link par click karein 👇\n" + siteUrl;
         
-        // 4. WhatsApp open karne ka universal link
+        // Sahi aur standard WhatsApp share API link
         var whatsappUrl = "https://whatsapp.com" + encodeURIComponent(message);
-        
-        // 5. Direct WhatsApp par bhejो
         window.location.href = whatsappUrl;
         
     } catch (error) {
-        // Agar fir bhi koi dikkat aaye toh ye simple link khol dega
-        window.location.href = "https://whatsapp.comHappy%20Janmashtami";
+        // Backup link ko bhi poori tarah sahi kar diya hai
+        window.location.href = "https://whatsapp.comHappy%20Janmashtami%20https://prajapativipin895-jpg.github.io/";
     }
 }
 
